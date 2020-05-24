@@ -1,10 +1,15 @@
 package com.main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CompositePersonnel implements Printer, Iterable<Printer> {
+public class CompositePersonnel implements Printer, Serializable, Iterable<Printer> {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -826881756634659858L;
   private String nomGroupe;
   private ArrayList<Printer> listPersonnel;
 

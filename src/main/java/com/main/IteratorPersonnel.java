@@ -1,9 +1,15 @@
 package com.main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public abstract class IteratorPersonnel implements Iterator<Printer> {
+public abstract class IteratorPersonnel implements Iterator<Printer>, Serializable {
+
+  /**
+   *
+   */
+  private static final long serialVersionUID = 228258944286611627L;
 
   private CompositePersonnel groupe;
 

@@ -1,9 +1,15 @@
 package com.main;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Personnel implements Printer {
+public class Personnel implements Printer, Serializable {
+
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
   private String nom;
 

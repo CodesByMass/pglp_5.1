@@ -1,7 +1,13 @@
 package com.main;
 
-public class PhoneNumber {
+import java.io.Serializable;
 
+public class PhoneNumber implements Serializable {
+
+  /**
+   *
+   */
+  private static final long serialVersionUID = -3021925163289423480L;
   private String type;
   private String number;
 
