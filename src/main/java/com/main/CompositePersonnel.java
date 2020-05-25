@@ -44,7 +44,7 @@ public class CompositePersonnel implements Printer, Serializable, Iterable<Print
     if (listPersonnel.contains(personnel)) {
       listPersonnel.remove(personnel);
     } else {
-      throw new IllegalArgumentException("Cet �l�ment n'existe pas");
+      throw new IllegalArgumentException("Cet élément n'existe pas");
     }
   }
 

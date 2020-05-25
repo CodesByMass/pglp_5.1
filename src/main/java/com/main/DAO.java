@@ -1,20 +1,46 @@
 package com.main;
 
+import java.io.FileNotFoundException;
+
 /**
- * La classe Data Access Object.
+ * L'interface Data Access Object.
  *
  * @author Mass'
  *
  * @param <T> Le type d'objet (Personnel, Composite Personnel)
  */
-public abstract class DAO<T> {
+public interface DAO<T> {
 
-  public abstract void create(T t) throws Exception;
+  /**
+   * Ajout de fichier.
+   *
+   * @param t L'employé à ajouter.
+   * @throws Exception
+   */
+  public void create(T t) throws Exception;
 
-  public abstract void update(T t, String file);
+  /**
+   * Modification de structure.
+   *
+   * @param t la structure à modifier.
+   * @throws FileNotFoundException Si la structure à modifier n'existe pas.
+   */
+  public void update(T t) throws FileNotFoundException;
 
-  public abstract void delete(T t);
+  /**
+   * Suppression de fichier.
+   *
+   * @param t le fichier à supprimer.
+   * @throws FileNotFoundException
+   */
+  public void delete(T t) throws FileNotFoundException;
 
-  public abstract T read(String s);
+  /**
+   * Lecture de fichier
+   *
+   * @param s le nom du fichier
+   * @return un groupe ou un employé.
+   */
+  public T read(String s);
 
 }
