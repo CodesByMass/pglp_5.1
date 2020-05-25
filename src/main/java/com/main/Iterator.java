@@ -2,6 +2,8 @@ package com.main;
 
 /**
  *
+ * Pattern Iterator.
+ * 
  * @author Mass'
  *
  * @param <PrintPersonnel> l'interface Composite.

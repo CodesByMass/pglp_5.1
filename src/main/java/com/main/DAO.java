@@ -15,9 +15,8 @@ public interface DAO<T> {
    * Ajout de fichier.
    *
    * @param t L'employé à ajouter.
-   * @throws Exception
    */
-  public void create(T t) throws Exception;
+  public void create(T t);
 
   /**
    * Modification de structure.

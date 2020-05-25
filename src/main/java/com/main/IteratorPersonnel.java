@@ -18,6 +18,7 @@ public abstract class IteratorPersonnel implements Iterator<PrintPersonnel> {
   private int position;
 
   /**
+   * Constructeur de l'itérateur
    *
    * @param groupe Récupération du groupe de personnel.
    * @param liste qui va copier le groupe.
