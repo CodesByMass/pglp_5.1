@@ -14,51 +14,41 @@ import java.io.Serializable;
 /**
  * @author Mass'
  *
- *         La classe de sérialisation.
+ *         La classe de sï¿½rialisation.
  */
 public class Serialization<T extends Serializable> {
 
   /**
-   * Méthode qui ajoute un objet à un fichier, qui sera créé si il n'existe pas.
+   * Mï¿½thode qui ajoute un objet ï¿½ un fichier, qui sera crï¿½ï¿½ si il n'existe pas.
    *
-   * @param obj l'objet à ajouter.
-   * @param filename le fichier à écrire.
+   * @param obj l'objet ï¿½ ajouter.
+   * @param filename le fichier ï¿½ ï¿½crire.
    */
   public void writeFile(T obj, String filename) {
 
 
-    ObjectOutputStream oos = null;
+    // Utilisation de try with resources de Java 7.
+    try (FileOutputStream fos = new FileOutputStream(createFile(filename));
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+        ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 
-    try {
-      oos = new ObjectOutputStream(
-          new BufferedOutputStream(new FileOutputStream(createFile(filename))));
 
       oos.writeObject(obj);
       oos.flush();
     } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      throw new Error("Une erreur s'est produite lors de la sÃ©rialisation");
     } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } finally {
-
-
-      try {
-        if (oos != null)
-          oos.close();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      throw new Error("Une erreur s'est produite lors de la sÃ©rialisation");
     }
-
   }
 
+
+
   /**
-   * Vérifie si le fichier existe, le crée dans ce cas.
+   * Vï¿½rifie si le fichier existe, le crï¿½e dans ce cas.
    *
    * @param name nom du fichier.
-   * @return le fichier, créé si il n'existe pas.
+   * @return le fichier, crï¿½ï¿½ si il n'existe pas.
    */
   public File createFile(String filename) {
     File temp = new File(filename);
@@ -70,6 +60,12 @@ public class Serialization<T extends Serializable> {
     return temp;
   }
 
+  /**
+   * Lit le fichier pour extraire un objet
+   *
+   * @param filename Nom du fichier ï¿½ lire
+   * @return l'pobjet lu, si il existe
+   */
   public T readFile(String filename) {
 
     ObjectInputStream ois = null;
@@ -78,14 +74,11 @@ public class Serialization<T extends Serializable> {
       ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File(filename))));
       temp = (T) ois.readObject();
     } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      throw new Error("Une erreur s'est produite lors de la sÃ©rialisation");
     } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      throw new Error("Une erreur s'est produite lors de la sÃ©rialisation");
     } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      throw new Error("Une erreur s'est produite lors de la sÃ©rialisation");
     } finally {
       try {
         if (ois != null)
