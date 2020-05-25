@@ -1,6 +1,6 @@
 package com.main;
 
-public interface Printer {
+public interface PrintPersonnel {
 
   public void print();
 }

@@ -10,7 +10,7 @@ import com.main.CompositePersonnel;
 import com.main.Personnel;
 import com.main.Personnel.Builder;
 import com.main.PhoneNumber;
-import com.main.Printer;
+import com.main.PrintPersonnel;
 
 
 /**
@@ -20,7 +20,7 @@ import com.main.Printer;
  */
 public class SerializationTest {
 
-  private ArrayList<Printer> tempList;
+  private ArrayList<PrintPersonnel> tempList;
   private CompositePersonnel cp;
   private Personnel p;
 
@@ -57,7 +57,7 @@ public class SerializationTest {
 
   @Test
   public void testWriteFileGroupe() {
-    tempList = new <Printer>ArrayList();
+    tempList = new ArrayList<PrintPersonnel>();
     tempList.add(p);
     cp = new CompositePersonnel("Groupe", tempList);
 

@@ -1,23 +1,28 @@
 package com.main;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public abstract class IteratorPersonnel implements Iterator<Printer>, Serializable {
-
-  /**
-   *
-   */
-  private static final long serialVersionUID = 228258944286611627L;
+/**
+ * Implémentation du pattern iterator.
+ *
+ * @author Mass'
+ *
+ */
+public abstract class IteratorPersonnel implements Iterator<PrintPersonnel> {
 
   private CompositePersonnel groupe;
 
-  private ArrayList<Printer> liste;
+  private ArrayList<PrintPersonnel> liste;
 
   private int position;
 
-  public IteratorPersonnel(CompositePersonnel groupe, ArrayList<Printer> liste) {
+  /**
+   *
+   * @param groupe Récupération du groupe de personnel.
+   * @param liste qui va copier le groupe.
+   */
+  public IteratorPersonnel(CompositePersonnel groupe, ArrayList<PrintPersonnel> liste) {
     this.groupe = groupe;
     this.liste = liste;
     this.liste.addAll(groupe.getPersonnel());
@@ -26,6 +31,7 @@ public abstract class IteratorPersonnel implements Iterator<Printer>, Serializab
   }
 
 
+  @Override
   public boolean hasNext() {
     if (position < liste.size()) {
       return true;
@@ -33,11 +39,12 @@ public abstract class IteratorPersonnel implements Iterator<Printer>, Serializab
     return false;
   }
 
-  public Printer next() {
+  @Override
+  public PrintPersonnel next() {
     if (!hasNext()) {
-      throw new NoSuchElementException("Il n y a plus d'�l�ment");
+      throw new NoSuchElementException("Il n y a plus d'éléments");
     } else {
-      Printer temp = this.liste.get(position++);
+      PrintPersonnel temp = this.liste.get(position++);
       return temp;
     }
   }
@@ -46,7 +53,7 @@ public abstract class IteratorPersonnel implements Iterator<Printer>, Serializab
     return groupe;
   }
 
-  public ArrayList<Printer> getListe() {
+  public ArrayList<PrintPersonnel> getListe() {
     return liste;
   }
 

@@ -74,7 +74,7 @@ public class Serialization<T extends Serializable> {
       ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File(filename))));
       temp = (T) ois.readObject();
     } catch (FileNotFoundException e) {
-      throw new Error("Une erreur s'est produite lors de la sérialisation");
+      throw new Error("Ce fichier n'existe pas");
     } catch (IOException e) {
       throw new Error("Une erreur s'est produite lors de la sérialisation");
     } catch (ClassNotFoundException e) {

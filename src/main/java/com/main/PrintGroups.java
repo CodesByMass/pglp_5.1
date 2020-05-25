@@ -1,23 +1,26 @@
 package com.main;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PrintGroups extends IteratorPersonnel implements Serializable {
+/**
+ * Itération sur un groupe en particulier.
+ *
+ * @author Mass'
+ *
+ */
+public class PrintGroups extends IteratorPersonnel {
 
-  /**
-   *
-   */
-  private static final long serialVersionUID = -269401832920945421L;
-
-  public PrintGroups(CompositePersonnel groupe, ArrayList<Printer> liste) {
+  public PrintGroups(CompositePersonnel groupe, ArrayList<PrintPersonnel> liste) {
     super(groupe, liste);
   }
 
+  /**
+   * Affiche les membres du groupe.
+   */
   @Override
   public void iteratorPersonnel() {
 
-    Iterator<Printer> iterator = (Iterator<Printer>) this.getListe().iterator();
+    java.util.Iterator<PrintPersonnel> iterator = this.getListe().iterator();
     while (iterator.hasNext()) {
       iterator.next().print();
     }

@@ -1,8 +1,15 @@
 package com.main;
 
-public interface Iterator<Printer> {
+/**
+ *
+ * @author Mass'
+ *
+ * @param <PrintPersonnel> l'interface Composite.
+ */
+@SuppressWarnings("hiding")
+public interface Iterator<PrintPersonnel> {
   boolean hasNext();
 
-  Printer next();
+  PrintPersonnel next();
 
 }

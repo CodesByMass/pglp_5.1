@@ -4,12 +4,18 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Personnel implements Printer, Serializable {
+/**
+ * Classe qui définit un employé.
+ *
+ * @author Mass'
+ *
+ */
+public class Personnel implements PrintPersonnel, Serializable {
 
   /**
    *
    */
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = -4922799134437944925L;
 
   private String nom;
 
@@ -22,6 +28,11 @@ public class Personnel implements Printer, Serializable {
   private LocalDate birthDate;
 
 
+  /**
+   * Construction de Personnel.
+   *
+   * @param builder le builder qui crée l'instance de personnel avec les paramètres optionnels
+   */
   public Personnel(Builder builder) {
     this.nom = builder.nom;
     this.prenom = builder.prenom;
@@ -31,6 +42,12 @@ public class Personnel implements Printer, Serializable {
 
   }
 
+  /**
+   * Builder de la classe Personnel.
+   *
+   * @author Mass'
+   *
+   */
   public static class Builder {
     private String nom;
 
@@ -38,7 +55,7 @@ public class Personnel implements Printer, Serializable {
 
     private String fonction;
 
-    // Param�tres optionnels
+    // Param�tres optionnels
     private ArrayList<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
 
     private LocalDate birthDate = LocalDate.parse("1970-01-01");
@@ -84,6 +101,7 @@ public class Personnel implements Printer, Serializable {
     return birthDate;
   }
 
+  @Override
   public void print() {
     System.out
         .println("Hello, i am " + this.prenom + " " + this.nom + " and i work as " + this.fonction);

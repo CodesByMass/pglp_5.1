@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertTrue;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import org.junit.Before;
@@ -31,6 +33,7 @@ public class PersonneDAOTest {
   @Test
   public void testWrite() throws Exception {
     dao.create(p);
+    assertTrue((new File(p.getNom() + ".indiv")).exists());
   }
 
   @Test(expected = FileNotFoundException.class)
@@ -38,4 +41,21 @@ public class PersonneDAOTest {
     dao.update(p2);
   }
 
+  @Test
+  public void testRead() throws Exception {
+    dao.create(p);
+    assertTrue(dao.read(p.getNom() + ".indiv").getNom().equals(p.getNom()));
+  }
+
+  @Test
+  public void testReadBirthDate() throws Exception {
+    dao.create(p);
+    assertTrue(dao.read(p.getNom() + ".indiv").getBirthDate().equals(p.getBirthDate()));
+
+  }
+
+  @Test(expected = FileNotFoundException.class)
+  public void testDelete() throws FileNotFoundException {
+    dao.delete(p2);
+  }
 }
